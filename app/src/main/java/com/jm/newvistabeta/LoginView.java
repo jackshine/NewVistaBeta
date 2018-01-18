@@ -5,7 +5,7 @@ package com.jm.newvistabeta;
  */
 
 // Callback interface of view layer.
-public interface LoginView {
+public interface LoginView extends BaseView {
 
     public void onLoginResult(String result);
 

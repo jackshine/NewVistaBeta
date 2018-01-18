@@ -9,7 +9,7 @@ import org.json.JSONObject;
  * Created by Johnny on 1/18/2018.
  */
 
-public class LoginPresenter extends BasePresenter {
+public class LoginPresenter extends BasePresenter<LoginView> {
 
     private LoginModel loginModel;
 
@@ -21,8 +21,8 @@ public class LoginPresenter extends BasePresenter {
         this.loginModel.login(email, password, new LoginListener() {
             @Override
             public void onSuccess(JSONObject jsonObject) {
-                if (getLoginView() != null) {
-                    getLoginView().onLoginResult(jsonObject.toString());
+                if (getView() != null) {
+                    getView().onLoginResult(jsonObject.toString());
                 }
             }
 

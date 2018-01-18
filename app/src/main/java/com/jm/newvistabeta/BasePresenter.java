@@ -4,20 +4,20 @@ package com.jm.newvistabeta;
  * Created by Johnny on 1/18/2018.
  */
 
-public abstract class BasePresenter {
+public abstract class BasePresenter<V extends BaseView> {
 
-    private LoginView loginView;
+    private V view;
 
-    public LoginView getLoginView() {
-        return loginView;
+    public V getView() {
+        return view;
     }
 
-    public void attachView(LoginView loginView) {
-        this.loginView = loginView;
+    public void attachView(V loginView) {
+        this.view = loginView;
     }
 
     public void detachView(LoginModel loginModel) {
-        this.loginView = null;
+        this.view = null;
         loginModel.cancel();
     }
 
