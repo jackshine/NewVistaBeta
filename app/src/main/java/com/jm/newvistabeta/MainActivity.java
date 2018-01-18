@@ -1,22 +1,14 @@
 package com.jm.newvistabeta;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.jm.newvistabeta.base.BaseActivity;
+import com.jm.newvistabeta.model.LoginModel;
+import com.jm.newvistabeta.presenter.LoginPresenter;
+import com.jm.newvistabeta.view.LoginView;
 import com.tsy.sdk.myokhttp.MyOkHttp;
-import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
-import com.tsy.sdk.myokhttp.response.RawResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends BaseActivity<LoginModel, LoginView, LoginPresenter> implements LoginView {
     MyOkHttp myOkHttp = new MyOkHttp();
@@ -28,7 +20,7 @@ public class MainActivity extends BaseActivity<LoginModel, LoginView, LoginPrese
     }
 
     public void clickLogin(View view) {
-        getPresenter().login("johnnysviva@gmail.com", "123456");
+        getPresenter().login("johnnysviva@gmail.com0", "123456");
     }
 
     @Override

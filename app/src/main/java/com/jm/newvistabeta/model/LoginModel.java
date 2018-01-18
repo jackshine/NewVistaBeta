@@ -1,15 +1,15 @@
-package com.jm.newvistabeta;
+package com.jm.newvistabeta.model;
 
 import android.util.Log;
 
+import com.jm.newvistabeta.base.BaseModel;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by Johnny on 1/18/2018.
@@ -23,7 +23,7 @@ public class LoginModel extends BaseModel {
         this.myOkHttp = myOkHttp;
     }
 
-    public void login(String email, String password, final LoginListener loginListener) {
+    public void login(String email, String password, final LoginCallbackListener loginCallbackListener) {
         final HashMap params = new HashMap();
         params.put("email", email);
         params.put("password", password);
@@ -38,12 +38,20 @@ public class LoginModel extends BaseModel {
                 myOkHttp.post().url(URL_LOGIN).params(params).tag(this).enqueue(new JsonResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, JSONObject response) {
-                        loginListener.onSuccess(response);
+                        try {
+                            if (response.get("loginStatus") == "succeed") {
+                                loginCallbackListener.onFinish(response.toString());
+                            }else{
+                                loginCallbackListener.onFinish("Failed");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     @Override
                     public void onFailure(int statusCode, String error_msg) {
-                        loginListener.onFailure(error_msg);
+                        loginCallbackListener.onError(error_msg);
                     }
                 });
             }

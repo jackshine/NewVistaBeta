@@ -1,4 +1,4 @@
-package com.jm.newvistabeta;
+package com.jm.newvistabeta.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
