@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyOkHttp/MyOkHttp.iml" filepath="$PROJECT_DIR$/MyOkHttp/MyOkHttp.iml" />
       <module fileurl="file://$PROJECT_DIR$/NewVistaBeta.iml" filepath="$PROJECT_DIR$/NewVistaBeta.iml" />
       <module fileurl="file://$PROJECT_DIR$/SeatTable/SeatTable.iml" filepath="$PROJECT_DIR$/SeatTable/SeatTable.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
