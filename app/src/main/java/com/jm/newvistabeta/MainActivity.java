@@ -21,7 +21,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements LoginView {
     private Button button;
     MyOkHttp myOkHttp = new MyOkHttp();
-    LoginPresenter loginPresenter = new LoginPresenter(this, myOkHttp);
+    LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +30,21 @@ public class MainActivity extends AppCompatActivity implements LoginView {
     }
 
     public void clickLogin(View view) {
-        loginPresenter.login("johnnysviva@gmail.com", "1234566");
+        LoginPresenter loginPresenter = new LoginPresenter(myOkHttp);
+        loginPresenter.attachView(this);
+        loginPresenter.login("johnnysviva@gmail.com", "123456");
     }
 
     @Override
     public void onLoginResult(String result) {
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (this.loginPresenter != null) {
+            loginPresenter.detachView(loginPresenter.getLoginModel());
+        }
     }
 }

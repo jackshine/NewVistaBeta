@@ -9,27 +9,20 @@ import org.json.JSONObject;
  * Created by Johnny on 1/18/2018.
  */
 
-public class LoginPresenter {
-    private LoginModel loginModel;
-    private LoginView loginView;
-    private MyOkHttp myOkHttp;
+public class LoginPresenter extends BasePresenter {
 
-    public LoginPresenter(LoginView loginView, MyOkHttp myOkHttp) {
-        this.loginView = loginView;
-        loginModel = new LoginModel();
-        this.myOkHttp = myOkHttp;
+    private LoginModel loginModel;
+
+    public LoginPresenter(MyOkHttp myOkHttp) {
+        loginModel = new LoginModel(myOkHttp);
     }
 
     public void login(String email, String password) {
-        this.loginModel.login(email, password, myOkHttp, new LoginListener() {
+        this.loginModel.login(email, password, new LoginListener() {
             @Override
             public void onSuccess(JSONObject jsonObject) {
-                if (loginView != null) {
-                    try {
-                        loginView.onLoginResult(jsonObject.getString("loginStatus"));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                if (getLoginView() != null) {
+                    getLoginView().onLoginResult(jsonObject.toString());
                 }
             }
 
@@ -39,4 +32,9 @@ public class LoginPresenter {
             }
         });
     }
+
+    public LoginModel getLoginModel() {
+        return loginModel;
+    }
+
 }

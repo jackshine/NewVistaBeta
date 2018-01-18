@@ -12,13 +12,18 @@ import java.util.HashMap;
  */
 
 public class LoginModel {
-    public static final String URL_LOGIN = "http://192.168.123.217:8080/servlet.customer.LogIn";
+    private static final String URL_LOGIN = "http://192.168.123.217:8080/servlet.customer.LogIn";
+    private MyOkHttp myOkHttp;
 
-    public void login(String email, String password, final MyOkHttp myOkHttp, final LoginListener loginListener) {
+    public LoginModel(MyOkHttp myOkHttp) {
+        this.myOkHttp = myOkHttp;
+    }
+
+    public void login(String email, String password, final LoginListener loginListener) {
         HashMap params = new HashMap();
         params.put("email", email);
         params.put("password", password);
-        myOkHttp.post().url(URL_LOGIN).params(params).enqueue(new JsonResponseHandler() {
+        myOkHttp.post().url(URL_LOGIN).params(params).tag(this).enqueue(new JsonResponseHandler() {
             @Override
             public void onSuccess(int statusCode, JSONObject response) {
                 loginListener.onSuccess(response);
@@ -29,5 +34,9 @@ public class LoginModel {
                 loginListener.onFailure(error_msg);
             }
         });
+    }
+
+    public void cancel() {
+        myOkHttp.cancel(this);
     }
 }
