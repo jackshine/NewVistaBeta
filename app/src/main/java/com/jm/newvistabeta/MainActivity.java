@@ -18,10 +18,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements LoginView {
-    private Button button;
+public class MainActivity extends BaseActivity<LoginModel, LoginView, LoginPresenter> implements LoginView {
     MyOkHttp myOkHttp = new MyOkHttp();
-    LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +28,7 @@ public class MainActivity extends AppCompatActivity implements LoginView {
     }
 
     public void clickLogin(View view) {
-        LoginPresenter loginPresenter = new LoginPresenter(myOkHttp);
-        loginPresenter.attachView(this);
-        loginPresenter.login("johnnysviva@gmail.com", "123456");
+        getPresenter().login("johnnysviva@gmail.com", "123456");
     }
 
     @Override
@@ -41,10 +37,12 @@ public class MainActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (this.loginPresenter != null) {
-            loginPresenter.detachView(loginPresenter.getLoginModel());
-        }
+    public LoginView createView() {
+        return this;
+    }
+
+    @Override
+    public LoginPresenter createPresenter() {
+        return new LoginPresenter(myOkHttp);
     }
 }

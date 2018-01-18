@@ -9,12 +9,14 @@ import org.json.JSONObject;
  * Created by Johnny on 1/18/2018.
  */
 
-public class LoginPresenter extends BasePresenter<LoginView> {
+public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
 
     private LoginModel loginModel;
 
     public LoginPresenter(MyOkHttp myOkHttp) {
         loginModel = new LoginModel(myOkHttp);
+        super.BasePresenter(loginModel);
+
     }
 
     public void login(String email, String password) {
@@ -31,10 +33,6 @@ public class LoginPresenter extends BasePresenter<LoginView> {
 
             }
         });
-    }
-
-    public LoginModel getLoginModel() {
-        return loginModel;
     }
 
 }
