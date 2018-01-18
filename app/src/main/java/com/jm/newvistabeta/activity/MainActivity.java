@@ -1,9 +1,10 @@
-package com.jm.newvistabeta;
+package com.jm.newvistabeta.activity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.jm.newvistabeta.R;
 import com.jm.newvistabeta.base.BaseActivity;
 import com.jm.newvistabeta.model.LoginModel;
 import com.jm.newvistabeta.presenter.LoginPresenter;

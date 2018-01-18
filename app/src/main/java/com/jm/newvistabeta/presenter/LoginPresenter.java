@@ -1,16 +1,10 @@
 package com.jm.newvistabeta.presenter;
 
-import android.util.Log;
-import android.widget.Toast;
-
-import com.jm.newvistabeta.MainActivity;
 import com.jm.newvistabeta.view.LoginView;
 import com.jm.newvistabeta.base.BasePresenter;
 import com.jm.newvistabeta.model.LoginCallbackListener;
 import com.jm.newvistabeta.model.LoginModel;
 import com.tsy.sdk.myokhttp.MyOkHttp;
-
-import org.json.JSONObject;
 
 /**
  * Created by Johnny on 1/18/2018.
