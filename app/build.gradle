@@ -42,4 +42,5 @@ dependencies {
 
     // An Android library that makes developers use SQLite database extremely easy.
     compile 'org.litepal.android:core:1.6.1'
+    compile project(path: ':MyOkHttp')
 }
