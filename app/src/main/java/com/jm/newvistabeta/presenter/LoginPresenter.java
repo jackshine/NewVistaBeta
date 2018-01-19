@@ -1,6 +1,6 @@
 package com.jm.newvistabeta.presenter;
 
-import com.jm.newvistabeta.UserEntity;
+import com.jm.newvistabeta.bean.UserEntity;
 import com.jm.newvistabeta.view.LoginView;
 import com.jm.newvistabeta.base.BasePresenter;
 import com.jm.newvistabeta.model.LoginModel;

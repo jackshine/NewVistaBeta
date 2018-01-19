@@ -1,11 +1,10 @@
-package com.jm.newvistabeta;
+package com.jm.newvistabeta.bean;
 
 /**
  * Created by Johnny on 1/19/2018.
  */
 
 public class UserEntity {
-
     private int id;
     private String email;
     private String password;
