@@ -28,6 +28,11 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
             @Override
             public void onFinish(String message) {
                 if (getView() != null) {
+                    if (message.contains("succeed")) {
+                        getView().onLoginSuccess();
+                    } else {
+                        getView().onLoginFailure();
+                    }
                     getView().onLoginResult(message);
                 }
             }
