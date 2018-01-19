@@ -1,5 +1,6 @@
 package com.jm.newvistabeta.presenter;
 
+import com.jm.newvistabeta.UserEntity;
 import com.jm.newvistabeta.view.LoginView;
 import com.jm.newvistabeta.base.BasePresenter;
 import com.jm.newvistabeta.model.LoginModel;
@@ -10,17 +11,20 @@ import com.tsy.sdk.myokhttp.MyOkHttp;
  */
 
 public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
-
     private LoginModel loginModel;
+    private UserEntity userEntity;
 
     public LoginPresenter(MyOkHttp myOkHttp) {
         loginModel = new LoginModel(myOkHttp);
+        userEntity = new UserEntity();
         super.BasePresenter(loginModel);
-
     }
 
     public void login() {
-        this.loginModel.login(getView().getEmail(), getView().getPassword(), new LoginModel.LoginCallbackListener() {
+        userEntity.setEmail(getView().getEmail());
+        userEntity.setPassword(getView().getPassword());
+
+        this.loginModel.login(userEntity, new LoginModel.LoginCallbackListener() {
             @Override
             public void onFinish(String message) {
                 if (getView() != null) {

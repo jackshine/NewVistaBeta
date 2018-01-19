@@ -14,9 +14,9 @@ import com.jm.newvistabeta.view.LoginView;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 
 public class MainActivity extends BaseActivity<LoginModel, LoginView, LoginPresenter> implements LoginView {
-
     private EditText email;
     private EditText password;
+    private Button submit;
     private MyOkHttp myOkHttp = new MyOkHttp();
 
     @Override
@@ -25,6 +25,7 @@ public class MainActivity extends BaseActivity<LoginModel, LoginView, LoginPrese
         setContentView(R.layout.activity_main);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
+        submit = (Button) findViewById(R.id.submit);
     }
 
     public void clickLogin(View view) {
@@ -44,6 +45,16 @@ public class MainActivity extends BaseActivity<LoginModel, LoginView, LoginPrese
     @Override
     public void onLoginResult(String result) {
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLoginSuccess() {
+        submit.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onLoginFailure() {
+        submit.setVisibility(View.VISIBLE);
     }
 
     @Override

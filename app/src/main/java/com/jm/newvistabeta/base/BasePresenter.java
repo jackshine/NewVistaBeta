@@ -5,7 +5,6 @@ package com.jm.newvistabeta.base;
  */
 
 public abstract class BasePresenter<M extends BaseModel, V extends BaseView> {
-
     private M model;
     private V view;
 

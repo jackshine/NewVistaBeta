@@ -5,7 +5,6 @@ package com.jm.newvistabeta.base;
  */
 
 public abstract class BaseModel {
-
     public abstract void cancel();
 
 }

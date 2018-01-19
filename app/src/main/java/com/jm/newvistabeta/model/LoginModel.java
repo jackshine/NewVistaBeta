@@ -2,6 +2,7 @@ package com.jm.newvistabeta.model;
 
 import android.util.Log;
 
+import com.jm.newvistabeta.UserEntity;
 import com.jm.newvistabeta.base.BaseModel;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
@@ -16,7 +17,6 @@ import java.util.HashMap;
  */
 
 public class LoginModel extends BaseModel {
-
     private static final String URL_LOGIN = "http://192.168.123.217:8080/servlet.customer.LogIn";
     private MyOkHttp myOkHttp;
 
@@ -24,10 +24,10 @@ public class LoginModel extends BaseModel {
         this.myOkHttp = myOkHttp;
     }
 
-    public void login(String email, String password, final LoginCallbackListener loginCallbackListener) {
+    public void login(UserEntity userEntity, final LoginCallbackListener loginCallbackListener) {
         final HashMap params = new HashMap();
-        params.put("email", email);
-        params.put("password", password);
+        params.put("email", userEntity.getEmail());
+        params.put("password", userEntity.getPassword());
         new Thread(new Runnable() {
             @Override
             public void run() {
