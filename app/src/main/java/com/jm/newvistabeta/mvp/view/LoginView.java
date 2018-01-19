@@ -1,6 +1,6 @@
-package com.jm.newvistabeta.view;
+package com.jm.newvistabeta.mvp.view;
 
-import com.jm.newvistabeta.base.BaseView;
+import com.jm.newvistabeta.mvp.base.BaseView;
 
 /**
  * Created by Johnny on 1/18/2018.

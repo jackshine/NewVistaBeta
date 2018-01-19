@@ -1,4 +1,4 @@
-package com.jm.newvistabeta.activity;
+package com.jm.newvistabeta.ui;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,13 +7,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.jm.newvistabeta.R;
-import com.jm.newvistabeta.base.BaseActivity;
-import com.jm.newvistabeta.model.LoginModel;
-import com.jm.newvistabeta.presenter.LoginPresenter;
-import com.jm.newvistabeta.view.LoginView;
+import com.jm.newvistabeta.ui.base.BaseActivity;
+import com.jm.newvistabeta.mvp.model.LoginModel;
+import com.jm.newvistabeta.mvp.presenter.LoginPresenter;
+import com.jm.newvistabeta.mvp.view.LoginView;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 
-public class MainActivity extends BaseActivity<LoginModel, LoginView, LoginPresenter> implements LoginView {
+public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPresenter> implements LoginView {
     private EditText email;
     private EditText password;
     private Button submit;

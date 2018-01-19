@@ -1,9 +1,9 @@
-package com.jm.newvistabeta.presenter;
+package com.jm.newvistabeta.mvp.presenter;
 
 import com.jm.newvistabeta.bean.UserEntity;
-import com.jm.newvistabeta.view.LoginView;
-import com.jm.newvistabeta.base.BasePresenter;
-import com.jm.newvistabeta.model.LoginModel;
+import com.jm.newvistabeta.mvp.view.LoginView;
+import com.jm.newvistabeta.mvp.base.BasePresenter;
+import com.jm.newvistabeta.mvp.model.LoginModel;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 
 /**

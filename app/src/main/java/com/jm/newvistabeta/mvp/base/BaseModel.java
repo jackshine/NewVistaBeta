@@ -1,4 +1,4 @@
-package com.jm.newvistabeta.base;
+package com.jm.newvistabeta.mvp.base;
 
 /**
  * Created by Johnny on 1/19/2018.

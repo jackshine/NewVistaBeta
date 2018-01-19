@@ -1,8 +1,12 @@
-package com.jm.newvistabeta.base;
+package com.jm.newvistabeta.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
+import com.jm.newvistabeta.mvp.base.BaseModel;
+import com.jm.newvistabeta.mvp.base.BasePresenter;
+import com.jm.newvistabeta.mvp.base.BaseView;
 
 /**
  * Created by Johnny on 1/19/2018.

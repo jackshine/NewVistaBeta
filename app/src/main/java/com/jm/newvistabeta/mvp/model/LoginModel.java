@@ -1,9 +1,9 @@
-package com.jm.newvistabeta.model;
+package com.jm.newvistabeta.mvp.model;
 
 import android.util.Log;
 
 import com.jm.newvistabeta.bean.UserEntity;
-import com.jm.newvistabeta.base.BaseModel;
+import com.jm.newvistabeta.mvp.base.BaseModel;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
 
