@@ -16,6 +16,7 @@ import java.util.HashMap;
  */
 
 public class LoginModel extends BaseModel {
+
     private static final String URL_LOGIN = "http://192.168.123.217:8080/servlet.customer.LogIn";
     private MyOkHttp myOkHttp;
 
@@ -39,9 +40,9 @@ public class LoginModel extends BaseModel {
                     @Override
                     public void onSuccess(int statusCode, JSONObject response) {
                         try {
-                            if (response.get("loginStatus") == "succeed") {
+                            if (response.get("loginStatus").equals("succeed")) {
                                 loginCallbackListener.onFinish(response.toString());
-                            }else{
+                            } else {
                                 loginCallbackListener.onFinish("Failed");
                             }
                         } catch (JSONException e) {
@@ -62,5 +63,13 @@ public class LoginModel extends BaseModel {
     public void cancel() {
         Log.v("cancel", "cancel");
         myOkHttp.cancel(this);
+    }
+
+    public interface LoginCallbackListener {
+
+        public void onFinish(String message);
+
+        public void onError(String message);
+
     }
 }

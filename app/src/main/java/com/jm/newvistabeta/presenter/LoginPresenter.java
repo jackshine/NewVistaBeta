@@ -2,7 +2,6 @@ package com.jm.newvistabeta.presenter;
 
 import com.jm.newvistabeta.view.LoginView;
 import com.jm.newvistabeta.base.BasePresenter;
-import com.jm.newvistabeta.model.LoginCallbackListener;
 import com.jm.newvistabeta.model.LoginModel;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 
@@ -20,8 +19,8 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
 
     }
 
-    public void login(String email, String password) {
-        this.loginModel.login(email, password, new LoginCallbackListener() {
+    public void login() {
+        this.loginModel.login(getView().getEmail(), getView().getPassword(), new LoginModel.LoginCallbackListener() {
             @Override
             public void onFinish(String message) {
                 if (getView() != null) {

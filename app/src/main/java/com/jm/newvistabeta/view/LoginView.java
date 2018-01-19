@@ -9,6 +9,10 @@ import com.jm.newvistabeta.base.BaseView;
 // Callback interface of view layer.
 public interface LoginView extends BaseView {
 
-    public void onLoginResult(String result);
+    String getEmail();
+
+    String getPassword();
+
+    void onLoginResult(String result);
 
 }
