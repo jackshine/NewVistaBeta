@@ -1,5 +1,6 @@
 package com.jm.newvistabeta.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +52,8 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
 
     public void clickSignUp(View view) {
         // Todo: Jump tp sign up activity.
+        Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+        startActivity(intent);
     }
 
     public void clickFindPassword(View view) {
