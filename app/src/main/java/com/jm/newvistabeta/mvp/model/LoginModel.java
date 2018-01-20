@@ -32,7 +32,7 @@ public class LoginModel extends BaseModel {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -61,15 +61,13 @@ public class LoginModel extends BaseModel {
 
     @Override
     public void cancel() {
-        Log.v("cancel", "cancel");
+        Log.v("cancel()", getClass() + ": Cancel login.");
         myOkHttp.cancel(this);
     }
 
     public interface LoginCallbackListener {
+        void onFinish(String message);
 
-        public void onFinish(String message);
-
-        public void onError(String message);
-
+        void onError(String message);
     }
 }

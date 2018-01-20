@@ -1,4 +1,4 @@
-package com.jm.newvistabeta.ui;
+package com.jm.newvistabeta.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,8 +14,6 @@ import com.jm.newvistabeta.mvp.model.LoginModel;
 import com.jm.newvistabeta.mvp.presenter.LoginPresenter;
 import com.jm.newvistabeta.mvp.view.LoginView;
 import com.tsy.sdk.myokhttp.MyOkHttp;
-
-import org.w3c.dom.Text;
 
 public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPresenter> implements LoginView {
     private EditText email;
@@ -40,15 +38,23 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         serverIp = (EditText) findViewById(R.id.serverIp);
-        saveAccount = (CheckBox) findViewById(R.id.saveAccount);
+        saveAccount = (CheckBox) findViewById(R.id.loginNow);
         logIn = (Button) findViewById(R.id.logIn);
         signUp = (Button) findViewById(R.id.signUp);
-        loginStatus = (TextView) findViewById(R.id.loginStatus);
+        loginStatus = (TextView) findViewById(R.id.signUpStatus);
         findPassword = (TextView) findViewById(R.id.findPassword);
     }
 
     public void clickLogin(View view) {
         getPresenter().login();
+    }
+
+    public void clickSignUp(View view) {
+        // Todo: Jump tp sign up activity.
+    }
+
+    public void clickFindPassword(View view) {
+        Toast.makeText(this, "onClick", Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -68,10 +74,12 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
 
     @Override
     public void onLoginSuccess() {
+        loginStatus.setText("Login success.");
     }
 
     @Override
     public void onLoginFailure() {
+        loginStatus.setText("Login fail.");
     }
 
     @Override
