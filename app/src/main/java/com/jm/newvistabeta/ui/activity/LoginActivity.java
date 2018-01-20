@@ -26,8 +26,6 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
     private TextView loginStatus;
     private TextView findPassword;
 
-    private MyOkHttp myOkHttp = new MyOkHttp();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +69,11 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
     }
 
     @Override
+    public String getServerIp() {
+        return serverIp.getText().toString().trim();
+    }
+
+    @Override
     public void onLoginResult(String result) {
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
     }
@@ -92,6 +95,6 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
 
     @Override
     public LoginPresenter createPresenter() {
-        return new LoginPresenter(myOkHttp);
+        return new LoginPresenter();
     }
 }

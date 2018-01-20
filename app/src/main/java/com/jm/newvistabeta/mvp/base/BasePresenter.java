@@ -28,5 +28,4 @@ public abstract class BasePresenter<M extends BaseModel, V extends BaseView> {
         this.view = null;
         model.cancel();
     }
-
 }

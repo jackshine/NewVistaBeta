@@ -14,8 +14,8 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
     private LoginModel loginModel;
     private UserEntity userEntity;
 
-    public LoginPresenter(MyOkHttp myOkHttp) {
-        loginModel = new LoginModel(myOkHttp);
+    public LoginPresenter() {
+        loginModel = new LoginModel();
         userEntity = new UserEntity();
         super.BasePresenter(loginModel);
     }

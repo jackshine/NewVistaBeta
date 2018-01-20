@@ -12,6 +12,8 @@ public interface LoginView extends BaseView {
 
     String getPassword();
 
+    String getServerIp();
+
     void onLoginResult(String result);
 
     void onLoginSuccess();
