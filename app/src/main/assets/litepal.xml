@@ -6,5 +6,6 @@
 
     <list>
         <mapping class="com.jm.newvistabeta.bean.UserEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.NetworkConfigurationEntity"></mapping>
     </list>
 </litepal>
