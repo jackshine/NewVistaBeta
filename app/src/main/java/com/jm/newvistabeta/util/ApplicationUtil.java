@@ -1,19 +1,23 @@
 package com.jm.newvistabeta.util;
 
-import android.app.Application;
 import android.content.Context;
+
+import org.litepal.LitePal;
+import org.litepal.LitePalApplication;
 
 /**
  * Created by Johnny on 1/21/2018.
  */
 
-public class ApplicationUtil extends Application {
+public class ApplicationUtil extends LitePalApplication {
     public static Context context;
 
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
+        LitePal.initialize(context);
+        LitePal.getDatabase();
     }
 
     public static Context getContext() {
