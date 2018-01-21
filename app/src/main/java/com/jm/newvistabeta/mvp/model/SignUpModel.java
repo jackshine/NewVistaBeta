@@ -2,10 +2,10 @@ package com.jm.newvistabeta.mvp.model;
 
 import com.jm.newvistabeta.bean.UserEntity;
 import com.jm.newvistabeta.mvp.base.BaseModel;
+import com.jm.newvistabeta.util.NetworkUtil;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class SignUpModel extends BaseModel {
     private MyOkHttp myOkHttp;
 
     public SignUpModel() {
-        this.myOkHttp = com.jm.newvistabeta.util.MyOkHttp.myOkHttp;
+        this.myOkHttp = NetworkUtil.myOkHttp;
     }
 
     public void signUp(UserEntity userEntity, String serverIp, final SignUpCallbackListener signUpCallbackListener) {
@@ -27,6 +27,7 @@ public class SignUpModel extends BaseModel {
         params.put("password", userEntity.getPassword());
         params.put("username", userEntity.getUsername());
         final String url = "http://" + serverIp + ":8080/servlet.customer.SignUp";
+
         new Thread(new Runnable() {
             @Override
             public void run() {

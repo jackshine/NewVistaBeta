@@ -13,6 +13,7 @@ import com.jm.newvistabeta.mvp.model.SignUpModel;
 import com.jm.newvistabeta.mvp.presenter.SignUpPresenter;
 import com.jm.newvistabeta.mvp.view.SignUpView;
 import com.jm.newvistabeta.ui.base.BaseActivity;
+import com.jm.newvistabeta.util.ApplicationUtil;
 
 public class SignUpActivity extends BaseActivity<SignUpModel, SignUpView, SignUpPresenter> implements SignUpView {
     private EditText username;
@@ -90,8 +91,13 @@ public class SignUpActivity extends BaseActivity<SignUpModel, SignUpView, SignUp
     }
 
     @Override
-    public void onSignUpResult(String responseMessage) {
-        Toast.makeText(this, responseMessage, Toast.LENGTH_LONG).show();
+    public void onSignUpResultToast(final String responseMessage) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(ApplicationUtil.getContext(), responseMessage, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

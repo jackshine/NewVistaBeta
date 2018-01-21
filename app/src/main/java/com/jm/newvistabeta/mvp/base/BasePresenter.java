@@ -13,7 +13,11 @@ public abstract class BasePresenter<M extends BaseModel, V extends BaseView> {
     }
 
     public V getView() {
-        return view;
+        if (view != null) {
+            return view;
+        } else {
+            return null;
+        }
     }
 
     public M getModel() {

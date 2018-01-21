@@ -14,7 +14,7 @@ public interface LoginView extends BaseView {
 
     String getServerIp();
 
-    void onLoginResult(String result);
+    void onLoginResultToast(String result);
 
     void onLoginSuccess();
 

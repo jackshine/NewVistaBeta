@@ -1,10 +1,11 @@
 package com.jm.newvistabeta.mvp.presenter;
 
+import android.os.Looper;
+
 import com.jm.newvistabeta.bean.UserEntity;
 import com.jm.newvistabeta.mvp.view.LoginView;
 import com.jm.newvistabeta.mvp.base.BasePresenter;
 import com.jm.newvistabeta.mvp.model.LoginModel;
-import com.tsy.sdk.myokhttp.MyOkHttp;
 
 /**
  * Created by Johnny on 1/18/2018.
@@ -12,6 +13,7 @@ import com.tsy.sdk.myokhttp.MyOkHttp;
 
 public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
     private LoginModel loginModel;
+    private LoginView loginView;
     private UserEntity userEntity;
 
     public LoginPresenter() {
@@ -21,27 +23,24 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
     }
 
     public void login() {
-        userEntity.setEmail(getView().getEmail());
-        userEntity.setPassword(getView().getPassword());
+        loginView = getView();
+        userEntity.setEmail(loginView.getEmail());
+        userEntity.setPassword(loginView.getPassword());
 
-        this.loginModel.login(userEntity, new LoginModel.LoginCallbackListener() {
+        this.loginModel.login(userEntity, loginView.getServerIp(), new LoginModel.LoginCallbackListener() {
             @Override
-            public void onFinish(String message) {
-                if (getView() != null) {
-                    if (message.contains("succeed")) {
-                        getView().onLoginSuccess();
-                    } else {
-                        getView().onLoginFailure();
-                    }
-                    getView().onLoginResult(message);
+            public void onFinish(String responseMessage) {
+                if (responseMessage.contains("success")) {
+                    loginView.onLoginSuccess();
+                } else {
+                    loginView.onLoginFailure();
                 }
+                loginView.onLoginResultToast(responseMessage);
             }
 
             @Override
-            public void onError(String message) {
-                if (getView() != null) {
-                    getView().onLoginResult(message);
-                }
+            public void onError(String errorMessage) {
+                loginView.onLoginResultToast(errorMessage);
             }
         });
     }

@@ -4,10 +4,10 @@ import android.util.Log;
 
 import com.jm.newvistabeta.bean.UserEntity;
 import com.jm.newvistabeta.mvp.base.BaseModel;
+import com.jm.newvistabeta.util.NetworkUtil;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -17,17 +17,19 @@ import java.util.HashMap;
  */
 
 public class LoginModel extends BaseModel {
-    private static final String URL_LOGIN = "http://192.168.123.217:8080/servlet.customer.LogIn";
+    //    private static final String URL_LOGIN = "http://192.168.123.217:8080/servlet.customer.LogIn";
     private MyOkHttp myOkHttp;
 
     public LoginModel() {
-        this.myOkHttp = com.jm.newvistabeta.util.MyOkHttp.myOkHttp;
+        this.myOkHttp = NetworkUtil.myOkHttp;
     }
 
-    public void login(UserEntity userEntity, final LoginCallbackListener loginCallbackListener) {
+    public void login(UserEntity userEntity, String serverIp, final LoginCallbackListener loginCallbackListener) {
         final HashMap params = new HashMap();
         params.put("email", userEntity.getEmail());
         params.put("password", userEntity.getPassword());
+        final String url = "http://" + serverIp + ":8080/servlet.customer.LogIn";
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -36,18 +38,10 @@ public class LoginModel extends BaseModel {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                myOkHttp.post().url(URL_LOGIN).params(params).tag(this).enqueue(new JsonResponseHandler() {
+                myOkHttp.post().url(url).params(params).tag(this).enqueue(new JsonResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, JSONObject response) {
-                        try {
-                            if (response.get("loginStatus").equals("succeed")) {
-                                loginCallbackListener.onFinish(response.toString());
-                            } else {
-                                loginCallbackListener.onFinish("Failed");
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        loginCallbackListener.onFinish(response.toString());
                     }
 
                     @Override
@@ -66,8 +60,8 @@ public class LoginModel extends BaseModel {
     }
 
     public interface LoginCallbackListener {
-        void onFinish(String message);
+        void onFinish(String responseMessage);
 
-        void onError(String message);
+        void onError(String errorMessage);
     }
 }

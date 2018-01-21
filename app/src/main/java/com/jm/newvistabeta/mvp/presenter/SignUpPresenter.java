@@ -45,16 +45,16 @@ public class SignUpPresenter extends BasePresenter<SignUpModel, SignUpView> {
                 public void onFinish(String responseMessage) {
                     if (responseMessage.contains("success")) {
                         signUpView.onSignUpSuccess();
-                        signUpView.onSignUpResult("All set up. You're ready to go");
+                        signUpView.onSignUpResultToast("All set up. You're ready to go");
                     } else {
                         signUpView.onSignUpFailure();
-                        signUpView.onSignUpResult(responseMessage);
+                        signUpView.onSignUpResultToast(responseMessage);
                     }
                 }
 
                 @Override
                 public void onError(String errorMessage) {
-                    signUpView.onSignUpResult(errorMessage);
+                    signUpView.onSignUpResultToast(errorMessage);
                 }
             });
         }

@@ -19,7 +19,7 @@ public interface SignUpView extends BaseView {
 
     void onPasswordNotMatched();
 
-    void onSignUpResult(String responseMessage);
+    void onSignUpResultToast(String responseMessage);
 
     void onSignUpSuccess();
 

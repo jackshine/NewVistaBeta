@@ -14,6 +14,7 @@ import com.jm.newvistabeta.ui.base.BaseActivity;
 import com.jm.newvistabeta.mvp.model.LoginModel;
 import com.jm.newvistabeta.mvp.presenter.LoginPresenter;
 import com.jm.newvistabeta.mvp.view.LoginView;
+import com.jm.newvistabeta.util.ApplicationUtil;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 
 public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPresenter> implements LoginView {
@@ -59,6 +60,16 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
     }
 
     @Override
+    public LoginView createView() {
+        return this;
+    }
+
+    @Override
+    public LoginPresenter createPresenter() {
+        return new LoginPresenter();
+    }
+
+    @Override
     public String getEmail() {
         return email.getText().toString().trim();
     }
@@ -74,8 +85,13 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
     }
 
     @Override
-    public void onLoginResult(String result) {
-        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+    public void onLoginResultToast(final String result) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(ApplicationUtil.getContext(), result, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -86,15 +102,5 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
     @Override
     public void onLoginFailure() {
         loginStatus.setText("Login fail.");
-    }
-
-    @Override
-    public LoginView createView() {
-        return this;
-    }
-
-    @Override
-    public LoginPresenter createPresenter() {
-        return new LoginPresenter();
     }
 }
