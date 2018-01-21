@@ -1,6 +1,8 @@
 package com.jm.newvistabeta.bean;
 
-public class MovieEntity {
+import org.litepal.crud.DataSupport;
+
+public class MovieEntity extends DataSupport {
     private int id;
     private String title;
     private String duration;

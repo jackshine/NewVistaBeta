@@ -1,8 +1,10 @@
 package com.jm.newvistabeta.bean;
 
+import org.litepal.crud.DataSupport;
+
 import java.sql.Timestamp;
 
-public class UserReviewEntity {
+public class UserReviewEntity extends DataSupport {
     private int id;
     private int userId;
     private int movieId;

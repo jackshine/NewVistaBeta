@@ -1,4 +1,6 @@
 package com.jm.newvistabeta.bean;
 
-public class AuditoriumEntity {
+import org.litepal.crud.DataSupport;
+
+public class AuditoriumEntity extends DataSupport {
 }

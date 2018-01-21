@@ -1,4 +1,6 @@
 package com.jm.newvistabeta.bean;
 
-public class TheaterEntity {
+import org.litepal.crud.DataSupport;
+
+public class TheaterEntity extends DataSupport {
 }

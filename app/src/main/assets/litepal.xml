@@ -5,7 +5,16 @@
     <version value="1"></version>
 
     <list>
-        <mapping class="com.jm.newvistabeta.bean.UserEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.AuditoriumEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.MovieEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.MovieScheduleEntity"></mapping>
         <mapping class="com.jm.newvistabeta.bean.NetworkConfigurationEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.OrderEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.PosterEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.SeatEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.TheaterEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.TopMovieEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.UserEntity"></mapping>
+        <mapping class="com.jm.newvistabeta.bean.UserReviewEntity"></mapping>
     </list>
 </litepal>

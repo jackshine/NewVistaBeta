@@ -1,10 +1,12 @@
 package com.jm.newvistabeta.bean;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by Johnny on 1/21/2018.
  */
 
-public class NetworkConfigurationEntity {
+public class NetworkConfigurationEntity extends DataSupport {
     private String serverIp;
     private int serverPushPort;
     private int clientPullPort;

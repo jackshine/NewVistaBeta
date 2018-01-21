@@ -1,4 +1,6 @@
 package com.jm.newvistabeta.bean;
 
-public class SeatEntity {
+import org.litepal.crud.DataSupport;
+
+public class SeatEntity extends DataSupport {
 }

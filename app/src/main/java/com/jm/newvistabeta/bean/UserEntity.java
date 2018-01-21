@@ -1,10 +1,12 @@
 package com.jm.newvistabeta.bean;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by Johnny on 1/19/2018.
  */
 
-public class UserEntity {
+public class UserEntity extends DataSupport {
     private int id;
     private String email;
     private String password;

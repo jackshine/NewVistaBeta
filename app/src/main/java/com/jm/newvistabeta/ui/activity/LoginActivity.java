@@ -2,6 +2,7 @@ package com.jm.newvistabeta.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,13 +16,12 @@ import com.jm.newvistabeta.mvp.model.LoginModel;
 import com.jm.newvistabeta.mvp.presenter.LoginPresenter;
 import com.jm.newvistabeta.mvp.view.LoginView;
 import com.jm.newvistabeta.util.ApplicationUtil;
-import com.tsy.sdk.myokhttp.MyOkHttp;
 
 public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPresenter> implements LoginView {
     private EditText email;
     private EditText password;
     private EditText serverIp;
-    private CheckBox saveAccount;
+    private CheckBox saveUser;
     private Button logIn;
     private Button signUp;
     private TextView loginStatus;
@@ -32,13 +32,15 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initialView();
+        onNotifyPresenterToAutofill();
+        Log.v("LoginActivity", (getPresenter().getView() == null) + "");
     }
 
     private void initialView() {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         serverIp = (EditText) findViewById(R.id.serverIp);
-        saveAccount = (CheckBox) findViewById(R.id.loginNow);
+        saveUser = (CheckBox) findViewById(R.id.saveUser);
         logIn = (Button) findViewById(R.id.logIn);
         signUp = (Button) findViewById(R.id.signUp);
         loginStatus = (TextView) findViewById(R.id.signUpStatus);
@@ -102,5 +104,22 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
     @Override
     public void onLoginFailure() {
         loginStatus.setText("Login fail.");
+    }
+
+    @Override
+    public boolean onSaveUserChecked() {
+        return saveUser.isChecked();
+    }
+
+    @Override
+    public void onNotifyPresenterToAutofill() {
+        getPresenter().autofill();
+    }
+
+    @Override
+    public void onAutofillUserInfo(String email, String password) {
+        this.email.setText(email);
+        this.password.setText(password);
+        saveUser.setChecked(true);
     }
 }

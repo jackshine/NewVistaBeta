@@ -4,13 +4,17 @@ import android.util.Log;
 
 import com.jm.newvistabeta.bean.UserEntity;
 import com.jm.newvistabeta.mvp.base.BaseModel;
+import com.jm.newvistabeta.mvp.dao.IDao;
+import com.jm.newvistabeta.mvp.dao.UserDao;
 import com.jm.newvistabeta.util.NetworkUtil;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
 
 import org.json.JSONObject;
+import org.litepal.crud.DataSupport;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Johnny on 1/18/2018.
@@ -20,8 +24,22 @@ public class LoginModel extends BaseModel {
     //    private static final String URL_LOGIN = "http://192.168.123.217:8080/servlet.customer.LogIn";
     private MyOkHttp myOkHttp;
 
+    public interface LoginCallbackListener {
+        void onFinish(String responseMessage);
+
+        void onError(String errorMessage);
+    }
+
     public LoginModel() {
         this.myOkHttp = NetworkUtil.myOkHttp;
+    }
+
+    public boolean hasUser() {
+        UserDao userDao = new UserDao();
+        if (!userDao.getAll().isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
     public void login(UserEntity userEntity, String serverIp, final LoginCallbackListener loginCallbackListener) {
@@ -53,15 +71,29 @@ public class LoginModel extends BaseModel {
         }).start();
     }
 
+    public void saveUser(UserEntity userEntity) {
+        UserDao userDao = new UserDao();
+        if (DataSupport.count("userentity") != 0) {
+            userDao.deleteAll();
+            userDao.save(userEntity);
+        } else {
+            userDao.save(userEntity);
+        }
+    }
+
+    public void deleteAllUser() {
+        UserDao userDao = new UserDao();
+        userDao.deleteAll();
+    }
+
+    public UserEntity loadUser() {
+        UserDao userDao = new UserDao();
+        return userDao.getAll().get(0);
+    }
+
     @Override
     public void cancel() {
         Log.v("cancel()", getClass() + ": Cancel login.");
         myOkHttp.cancel(this);
-    }
-
-    public interface LoginCallbackListener {
-        void onFinish(String responseMessage);
-
-        void onError(String errorMessage);
     }
 }

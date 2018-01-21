@@ -1,4 +1,6 @@
 package com.jm.newvistabeta.bean;
 
-public class TopMovieEntity {
+import org.litepal.crud.DataSupport;
+
+public class TopMovieEntity extends DataSupport {
 }

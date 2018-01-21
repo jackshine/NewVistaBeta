@@ -1,10 +1,12 @@
 package com.jm.newvistabeta.bean;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by Johnny on 1/21/2018.
  */
 
-public class Poster {
+public class PosterEntity extends DataSupport {
     private int id;
     private String movieTitle;
     private byte[] poster;

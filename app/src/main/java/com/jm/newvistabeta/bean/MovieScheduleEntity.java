@@ -1,10 +1,12 @@
 package com.jm.newvistabeta.bean;
 
+import org.litepal.crud.DataSupport;
+
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 
-public class MovieScheduleEntity {
+public class MovieScheduleEntity extends DataSupport {
     private int id;
     private int movieId;
     private int auditoriumId;

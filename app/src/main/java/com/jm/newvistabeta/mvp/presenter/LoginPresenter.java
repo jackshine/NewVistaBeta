@@ -1,7 +1,5 @@
 package com.jm.newvistabeta.mvp.presenter;
 
-import android.os.Looper;
-
 import com.jm.newvistabeta.bean.UserEntity;
 import com.jm.newvistabeta.mvp.view.LoginView;
 import com.jm.newvistabeta.mvp.base.BasePresenter;
@@ -26,12 +24,18 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
         loginView = getView();
         userEntity.setEmail(loginView.getEmail());
         userEntity.setPassword(loginView.getPassword());
+        final boolean isSaveUser = loginView.onSaveUserChecked();
 
         this.loginModel.login(userEntity, loginView.getServerIp(), new LoginModel.LoginCallbackListener() {
             @Override
             public void onFinish(String responseMessage) {
                 if (responseMessage.contains("success")) {
                     loginView.onLoginSuccess();
+                    if (isSaveUser == true) {
+                        loginModel.saveUser(userEntity);
+                    } else {
+                        loginModel.deleteAllUser();
+                    }
                 } else {
                     loginView.onLoginFailure();
                 }
@@ -43,6 +47,25 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                 loginView.onLoginResultToast(errorMessage);
             }
         });
+    }
+
+    public void saveUser() {
+        loginView = getView();
+        String email = loginView.getEmail();
+        String password = loginView.getPassword();
+        if (email.compareTo("") != 0 || password.compareTo("") != 0) {
+            userEntity.setEmail(loginView.getEmail());
+            userEntity.setPassword(loginView.getPassword());
+            loginModel.saveUser(userEntity);
+        }
+    }
+
+    public void autofill() {
+        if (loginModel.hasUser()) {
+            loginView = getView();
+            UserEntity userEntity = loginModel.loadUser();
+            loginView.onAutofillUserInfo(userEntity.getEmail(), userEntity.getPassword());
+        }
     }
 
 }

@@ -38,7 +38,7 @@ public class SignUpActivity extends BaseActivity<SignUpModel, SignUpView, SignUp
         password = (EditText) findViewById(R.id.password);
         password2 = (EditText) findViewById(R.id.password2);
         serverIp = (EditText) findViewById(R.id.serverIp);
-        loginNow = (CheckBox) findViewById(R.id.loginNow);
+        loginNow = (CheckBox) findViewById(R.id.saveUser);
         signUpStatus = (TextView) findViewById(R.id.signUpStatus);
         signUp = (Button) findViewById(R.id.signUp);
     }

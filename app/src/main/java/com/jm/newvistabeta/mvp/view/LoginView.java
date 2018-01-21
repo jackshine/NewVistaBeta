@@ -19,4 +19,10 @@ public interface LoginView extends BaseView {
     void onLoginSuccess();
 
     void onLoginFailure();
+
+    boolean onSaveUserChecked();
+
+    void onNotifyPresenterToAutofill();
+
+    void onAutofillUserInfo(String email, String password);
 }

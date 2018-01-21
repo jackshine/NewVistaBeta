@@ -1,8 +1,10 @@
 package com.jm.newvistabeta.bean;
 
+import org.litepal.crud.DataSupport;
+
 import java.sql.Timestamp;
 
-public class OrderEntity {
+public class OrderEntity extends DataSupport {
     private int id;
     private int userId;
     private Timestamp orderDatetime;

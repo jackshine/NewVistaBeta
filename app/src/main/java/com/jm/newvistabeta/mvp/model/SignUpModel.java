@@ -1,5 +1,7 @@
 package com.jm.newvistabeta.mvp.model;
 
+import android.util.Log;
+
 import com.jm.newvistabeta.bean.UserEntity;
 import com.jm.newvistabeta.mvp.base.BaseModel;
 import com.jm.newvistabeta.util.NetworkUtil;
@@ -53,7 +55,8 @@ public class SignUpModel extends BaseModel {
 
     @Override
     public void cancel() {
-
+        Log.v("cancel()", getClass() + ": Cancel sign up.");
+        myOkHttp.cancel(this);
     }
 
     public interface SignUpCallbackListener {
