@@ -52,13 +52,12 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
     }
 
     public void clickSignUp(View view) {
-        // Todo: Jump tp sign up activity.
         Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
         startActivity(intent);
     }
 
     public void clickFindPassword(View view) {
-        Toast.makeText(this, "onClick", Toast.LENGTH_SHORT);
+        Toast.makeText(this, "Function still in construction", Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -99,6 +98,7 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
     @Override
     public void onLoginSuccess() {
         loginStatus.setText("Login success.");
+        finish();
     }
 
     @Override

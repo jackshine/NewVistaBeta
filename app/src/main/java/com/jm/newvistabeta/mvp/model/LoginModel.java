@@ -21,7 +21,6 @@ import java.util.List;
  */
 
 public class LoginModel extends BaseModel {
-    //    private static final String URL_LOGIN = "http://192.168.123.217:8080/servlet.customer.LogIn";
     private MyOkHttp myOkHttp;
 
     public interface LoginCallbackListener {
@@ -46,7 +45,8 @@ public class LoginModel extends BaseModel {
         final HashMap params = new HashMap();
         params.put("email", userEntity.getEmail());
         params.put("password", userEntity.getPassword());
-        final String url = "http://" + serverIp + ":8080/servlet.customer.LogIn";
+
+        final String url = "http://" + serverIp + NetworkUtil.LOG_IN_URL;
 
         new Thread(new Runnable() {
             @Override
