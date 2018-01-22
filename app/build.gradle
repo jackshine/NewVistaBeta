@@ -44,4 +44,6 @@ dependencies {
     // An Android library that makes developers use SQLite database extremely easy.
     compile 'org.litepal.android:core:1.6.1'
     compile project(path: ':MyOkHttp')
+    // Material Design Search Bar for Android
+    compile 'com.github.mancj:MaterialSearchBar:0.7.5'
 }
