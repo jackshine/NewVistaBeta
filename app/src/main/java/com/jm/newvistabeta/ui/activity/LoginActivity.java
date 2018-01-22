@@ -22,10 +22,7 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
     private EditText password;
     private EditText serverIp;
     private CheckBox saveUser;
-    private Button logIn;
-    private Button signUp;
     private TextView loginStatus;
-    private TextView findPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +38,7 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
         password = (EditText) findViewById(R.id.password);
         serverIp = (EditText) findViewById(R.id.serverIp);
         saveUser = (CheckBox) findViewById(R.id.saveUser);
-        logIn = (Button) findViewById(R.id.logIn);
-        signUp = (Button) findViewById(R.id.signUp);
         loginStatus = (TextView) findViewById(R.id.signUpStatus);
-        findPassword = (TextView) findViewById(R.id.findPassword);
     }
 
     public void clickLogin(View view) {
