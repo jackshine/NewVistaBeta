@@ -20,7 +20,7 @@
         android:src="@mipmap/ic_launcher_round"/>
 
     <TextView
-        android:id="@+id/usernameTV"
+        android:id="@+id/usernameNavigation"
         style="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
     <TextView
-        android:id="@+id/emailTV"
+        android:id="@+id/emailNavigation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="android@google.com"
