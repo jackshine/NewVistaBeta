@@ -51,7 +51,7 @@ public class LoginActivity extends BaseActivity<LoginModel, LoginView, LoginPres
     }
 
     public void clickFindPassword(View view) {
-        Toast.makeText(this, "Function still in construction", Toast.LENGTH_SHORT);
+        Toast.makeText(this, "Function still in construction", Toast.LENGTH_SHORT).show();
     }
 
     @Override
